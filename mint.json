@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "CCTP Explorer",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
@@ -18,12 +18,12 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:support@blockflow.network"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Explorer",
+    "url": "https://cctp.blockflow.network"
   },
   "tabs": [
     {
@@ -31,61 +31,36 @@
       "url": "api-reference"
     }
   ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
-  ],
   "navigation": [
     {
-      "group": "Get Started",
-      "pages": [
-        "introduction",
-        "quickstart",
-        "development"
-      ]
-    },
-    {
-      "group": "Essentials",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
       "group": "API Documentation",
+      "pages": ["api-reference/introduction"]
+    },
+    {
+      "group": "Stats",
+      "pages": ["api-reference/stats/recipients", "api-reference/stats/senders"]
+    },
+    {
+      "group": "Transactions",
       "pages": [
-        "api-reference/introduction"
+        "api-reference/transactions/burn",
+        "api-reference/transactions/mint",
+        "api-reference/transactions/sender",
+        "api-reference/transactions/recipient",
+        "api-reference/transactions/volume",
+        "api-reference/transactions/volumeIn",
+        "api-reference/transactions/volumeOut",
+        "api-reference/transactions/txHash"
       ]
     },
     {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
-      ]
+      "group": "Domains",
+      "pages": ["api-reference/domains/list"]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "x": "https://x.com/blockflowLabs",
+    "github": "https://github.com/blockflowlabs",
+    "linkedin": "https://in.linkedin.com/company/blockflowlabs"
   }
 }

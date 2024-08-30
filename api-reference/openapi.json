@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+    "title": "OpenAPI CCTP Explorer",
+    "description": "Api reference for the CCTP Explorer",
     "license": {
       "name": "MIT"
     },
@@ -10,75 +10,70 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
-    }
-  ],
-  "security": [
-    {
-      "bearerAuth": []
+      "url": "http://api.cctp.com/"
     }
   ],
   "paths": {
-    "/plants": {
+    "/transactions/burn": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "description": "Returns the daily stats",
         "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "The start date to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "The end date to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sourceDomain",
+            "in": "query",
+            "description": "The source domain to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "destinationDomain",
+            "in": "query",
+            "description": "The destination domain to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number to get",
+            "schema": {
+              "type": "integer"
+            }
+          },
           {
             "name": "limit",
             "in": "query",
-            "description": "The maximum number of results to return",
+            "description": "The number of results to return",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "integer"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "Daily stats",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
+                  "$ref": "#/components/schemas/BurnTransactions"
                 }
               }
             }
@@ -96,25 +91,576 @@
         }
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+    "/transactions/mint": {
+      "get": {
+        "description": "Returns the daily stats",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
+            "name": "startDate",
+            "in": "query",
+            "description": "The start date to get the stats for",
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "The end date to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sourceDomain",
+            "in": "query",
+            "description": "The source domain to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "destinationDomain",
+            "in": "query",
+            "description": "The destination domain to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number to get",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of results to return",
+            "schema": {
+              "type": "integer"
             }
           }
         ],
         "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
+          "200": {
+            "description": "Daily stats",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BurnTransactions"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/address/recipient": {
+      "get": {
+        "description": "Returns the transactions for a given address as recipient",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "description": "The address to get the transactions for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "The start date to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "The end date to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number to get",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of results to return",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transactions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecipientTransaction"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/address/sender": {
+      "get": {
+        "description": "Returns the transactions for a given address as sender",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "description": "The address to get the transactions for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "The start date to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "The end date to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number to get",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of results to return",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transactions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecipientTransaction"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/volume": {
+      "get": {
+        "description": "Get transaction volume over time",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "The start date to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "The end date to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction volume",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Volume"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/volume/in": {
+      "get": {
+        "description": "Get volume bridged into a specific domain",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "The start date to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "The end date to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sourceDomain",
+            "in": "query",
+            "description": "The source domain to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "destinationDomain",
+            "in": "query",
+            "description": "The destination domain to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number to get",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of results to return",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Volume",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumeIn"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/volume/out": {
+      "get": {
+        "description": "Get volume bridged out of a specific domain",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "The start date to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "The end date to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sourceDomain",
+            "in": "query",
+            "description": "The source domain to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "destinationDomain",
+            "in": "query",
+            "description": "The destination domain to get the stats for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number to get",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of results to return",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Volume",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumeIn"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/txHash": {
+      "get": {
+        "description": "Get transaction by transaction hash",
+        "parameters": [
+          {
+            "name": "txHash",
+            "in": "query",
+            "description": "The tx hash to get the transaction for",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionByTxHash"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/domains/list": {
+      "get": {
+        "description": "Get list of domains",
+        "responses": {
+          "200": {
+            "description": "Domains",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Domains"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stats/recipients": {
+      "get": {
+        "description": "Get top recipients",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "Unix timestamp for the start date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "Unix timestamp for the end date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of results to return",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top recipients",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TopRecipients"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stats/senders": {
+      "get": {
+        "description": "Get top senders",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "Unix timestamp for the start date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "Unix timestamp for the end date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of results to return",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top senders",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TopRecipients"
+                }
+              }
+            }
           },
           "400": {
             "description": "unexpected error",
@@ -132,63 +678,355 @@
   },
   "components": {
     "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
+      "TopRecipients": {
         "type": "object",
         "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
+          "status": {
+            "type": "number"
           },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
-        }
-      },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
+          "body": {
             "type": "object",
             "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
+              "startDate": {
+                "type": "number"
+              },
+              "endDate": {
+                "type": "number"
+              },
+              "topRecipients": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "address": {
+                      "type": "string"
+                    },
+                    "totalVolume": {
+                      "type": "number"
+                    },
+                    "transactionCount": {
+                      "type": "number"
+                    }
+                  }
+                }
               }
             }
           }
-        ]
+        }
       },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
+      "Domains": {
         "type": "object",
         "properties": {
-          "error": {
+          "status": {
+            "type": "number"
+          },
+          "domains": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "TransactionByTxHash": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "body": {
+            "type": "object",
+            "properties": {
+              "transactionType": {
+                "type": "string"
+              },
+              "transaction": {
+                "type": "object",
+                "properties": {
+                  "_id": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "amount": {
+                    "type": "number"
+                  },
+                  "timestamp": {
+                    "type": "number"
+                  },
+                  "isCompleted": {
+                    "type": "boolean"
+                  },
+                  "sourceDomain": {
+                    "type": "string"
+                  },
+                  "destinationDomain": {
+                    "type": "string"
+                  },
+                  "mintRecipient": {
+                    "type": "string"
+                  },
+                  "messageSender": {
+                    "type": "string"
+                  },
+                  "burnToken": {
+                    "type": "string"
+                  },
+                  "destinationCaller": {
+                    "type": "string"
+                  },
+                  "detinationTokenMessenger": {
+                    "type": "string"
+                  },
+                  "transactionHash": {
+                    "type": "string"
+                  },
+                  "entityId": {
+                    "type": "string"
+                  },
+                  "blockNumber": {
+                    "type": "number"
+                  },
+                  "chainId": {
+                    "type": "string"
+                  },
+                  "instanceId": {
+                    "type": "string"
+                  },
+                  "sourceChain": {
+                    "type": "string"
+                  },
+                  "destinationChain": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Volume": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "body": {
+            "type": "object",
+            "properties": {
+              "startDate": {
+                "type": "number"
+              },
+              "endDate": {
+                "type": "number"
+              },
+              "mintVolume": {
+                "type": "number"
+              },
+              "burnVolume": {
+                "type": "number"
+              },
+              "totalVolume": {
+                "type": "number"
+              },
+              "mintCount": {
+                "type": "number"
+              },
+              "burnCount": {
+                "type": "number"
+              },
+              "totalCount": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "VolumeIn": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "body": {
+            "type": "object",
+            "properties": {
+              "startDate": {
+                "type": "number"
+              },
+              "endDate": {
+                "type": "number"
+              },
+
+              "totalVolume": {
+                "type": "number"
+              },
+
+              "totalCount": {
+                "type": "number"
+              },
+              "volumeBreakdown": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "sourceChain": {
+                      "type": "string"
+                    },
+                    "destinationChain": {
+                      "type": "string"
+                    },
+                    "totalAmount": {
+                      "type": "number"
+                    },
+                    "count": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "RecipientTransaction": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "body": {
+            "type": "object",
+            "properties": {
+              "address": {
+                "type": "string"
+              },
+              "totalTransactions": {
+                "type": "number"
+              },
+              "transactions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "amount": {
+                      "type": "number"
+                    },
+                    "timestamp": {
+                      "type": "number"
+                    },
+                    "sourceChain": {
+                      "type": "string"
+                    },
+                    "destinationChain": {
+                      "type": "string"
+                    },
+                    "transactionType": {
+                      "type": "string"
+                    },
+                    "transactionHash": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "BurnTransactions": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "body": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sourceChain": {
+                  "type": "string"
+                },
+                "destinationChain": {
+                  "type": "string"
+                },
+                "totalAmount": {
+                  "type": "number"
+                },
+                "chain": {
+                  "type": "string"
+                },
+                "transactions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "amount": {
+                        "type": "number"
+                      },
+                      "timestamp": {
+                        "type": "number"
+                      },
+                      "isCompleted": {
+                        "type": "boolean"
+                      },
+                      "sourceDomain": {
+                        "type": "string"
+                      },
+                      "destinationDomain": {
+                        "type": "string"
+                      },
+                      "mintRecipient": {
+                        "type": "string"
+                      },
+                      "messageSender": {
+                        "type": "string"
+                      },
+                      "burnToken": {
+                        "type": "string"
+                      },
+                      "destinationCaller": {
+                        "type": "string"
+                      },
+                      "detinationTokenMessenger": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Error": {
+        "required": ["status", "body"],
+        "type": "object",
+        "properties": {
+          "status": {
             "type": "integer",
             "format": "int32"
           },
-          "message": {
-            "type": "string"
+          "body": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
-      }
-    },
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
       }
     }
   }
