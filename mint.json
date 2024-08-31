@@ -5,7 +5,7 @@
     "dark": "/logo/blockflow-dark.svg",
     "light": "/logo/blockflow-light.svg"
   },
-  "favicon": "/logo/blockflow.svg",
+  "favicon": "/favicon.svg",
   "colors": {
     "primary": "#0D9373",
     "light": "#07C983",
@@ -34,7 +34,11 @@
   "navigation": [
     {
       "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
+      "pages": [
+        "api-reference/introduction",
+        "api-reference/prerequisites",
+        "api-reference/errors"
+      ]
     },
     {
       "group": "Stats",
