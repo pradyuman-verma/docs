@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://api.blockflow.network/rest/"
+      "url": "https://api.blockflow.network/rest/90739f7e-fe01-4655-b303-b6125ce7414f/"
     }
   ],
   "security": [
@@ -19,65 +19,50 @@
     }
   ],
   "paths": {
-    "/9469e272-7189-4842-9eb8-64aa5e10dcd9-cli": {
-      "get": {
-        "description": "Returns the daily stats",
-        "parameters": [
-          {
-            "name": "startDate",
-            "in": "query",
-            "description": "Unix timestamp for the start date",
-            "schema": {
-              "type": "string",
-              "default": "1 day ago (Unix timestamp)"
-            }
-          },
-          {
-            "name": "endDate",
-            "in": "query",
-            "description": "Unix timestamp for the end date",
-            "schema": {
-              "type": "string",
-              "default": "now (Unix timestamp)"
-            }
-          },
-          {
-            "name": "sourceDomain",
-            "in": "query",
-            "description": "Domain IDs for the source domain",
-            "schema": {
-              "type": "string",
-              "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
-            }
-          },
-          {
-            "name": "destinationDomain",
-            "in": "query",
-            "description": "Domain IDs for the destination domain",
-            "schema": {
-              "type": "string",
-              "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "The page number to get",
-            "schema": {
-              "type": "integer",
-              "default": "1"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The number of results to return",
-            "schema": {
-              "type": "integer",
-              "default": "100"
+    "/transactions-burn": {
+      "post": {
+        "description": "Get burn transactions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "startDate": {
+                    "type": "string",
+                    "description": "Unix timestamp for the start date",
+                    "default": "1 day ago (Unix timestamp)"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "description": "Unix timestamp for the end date",
+                    "default": "now (Unix timestamp)"
+                  },
+                  "sourceDomain": {
+                    "type": "string",
+                    "description": "Domain IDs for the source domain",
+                    "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
+                  },
+                  "destinationDomain": {
+                    "type": "string",
+                    "description": "Domain IDs for the destination domain",
+                    "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "description": "The page number to get",
+                    "default": 1
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "The number of results to return",
+                    "default": 100
+                  }
+                }
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Burn transactions",
@@ -122,65 +107,50 @@
         }
       }
     },
-    "/08bc84fb-1c52-4b2a-999f-7fc3953b505f-cli": {
-      "get": {
-        "description": "Returns the daily stats",
-        "parameters": [
-          {
-            "name": "startDate",
-            "in": "query",
-            "description": "Unix timestamp for the start date",
-            "schema": {
-              "type": "string",
-              "default": "1 day ago (Unix timestamp)"
-            }
-          },
-          {
-            "name": "endDate",
-            "in": "query",
-            "description": "The end date as unix timestamp to get mint Transactions",
-            "schema": {
-              "type": "string",
-              "default": "now (Unix timestamp)"
-            }
-          },
-          {
-            "name": "sourceDomain",
-            "in": "query",
-            "description": "Domain IDs for the source domain",
-            "schema": {
-              "type": "string",
-              "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
-            }
-          },
-          {
-            "name": "destinationDomain",
-            "in": "query",
-            "description": "Domain IDs for the destination domain",
-            "schema": {
-              "type": "string",
-              "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "The page number to get",
-            "schema": {
-              "type": "integer",
-              "default": "1"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The number of results to return",
-            "schema": {
-              "type": "integer",
-              "default": "100"
+    "/transactions-mint": {
+      "post": {
+        "description": "Get mint transactions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "startDate": {
+                    "type": "string",
+                    "description": "Unix timestamp for the start date",
+                    "default": "1 day ago (Unix timestamp)"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "description": "Unix timestamp for the end date",
+                    "default": "now (Unix timestamp)"
+                  },
+                  "sourceDomain": {
+                    "type": "string",
+                    "description": "Domain IDs for the source domain",
+                    "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
+                  },
+                  "destinationDomain": {
+                    "type": "string",
+                    "description": "Domain IDs for the destination domain",
+                    "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "description": "The page number to get",
+                    "default": 1
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "The number of results to return",
+                    "default": 100
+                  }
+                }
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Mint transactions",
@@ -225,56 +195,45 @@
         }
       }
     },
-    "/210fee0a-3092-488c-8789-b60c7fa48cc8-cli": {
-      "get": {
+    "/transactions-address-recipient": {
+      "post": {
         "description": "Returns the transactions for a given address as recipient",
-        "parameters": [
-          {
-            "name": "address",
-            "in": "query",
-            "description": "The address to get the transactions for",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "startDate",
-            "in": "query",
-            "description": "Unix timestamp for the start date",
-            "schema": {
-              "type": "string",
-              "default": "1 day ago (Unix timestamp)"
-            }
-          },
-          {
-            "name": "endDate",
-            "in": "query",
-            "description": "The end date as unix timestamp to get recipient transactions",
-            "schema": {
-              "type": "string",
-              "default": "now (Unix timestamp)"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "The page number to get",
-            "schema": {
-              "type": "integer",
-              "default": "1"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The number of results to return",
-            "schema": {
-              "type": "integer",
-              "default": "100"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["address"],
+                "properties": {
+                  "address": {
+                    "type": "string",
+                    "description": "The address to get the transactions for"
+                  },
+                  "startDate": {
+                    "type": "string",
+                    "description": "Unix timestamp for the start date",
+                    "default": "1 day ago (Unix timestamp)"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "description": "The end date as unix timestamp to get recipient transactions",
+                    "default": "now (Unix timestamp)"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "description": "The page number to get",
+                    "default": 1
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "The number of results to return",
+                    "default": 100
+                  }
+                }
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Recipient transactions",
@@ -319,56 +278,45 @@
         }
       }
     },
-    "/b4181711-3153-4d29-83dc-80dfff973e49-cli": {
-      "get": {
+    "/transactions-address-sender": {
+      "post": {
         "description": "Returns the transactions for a given address as sender",
-        "parameters": [
-          {
-            "name": "address",
-            "in": "query",
-            "description": "The address to get the transactions for",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "startDate",
-            "in": "query",
-            "description": "Unix timestamp for the start date",
-            "schema": {
-              "type": "string",
-              "default": "1 day ago (Unix timestamp)"
-            }
-          },
-          {
-            "name": "endDate",
-            "in": "query",
-            "description": "The end date as unix timestamp to get sender transactions",
-            "schema": {
-              "type": "string",
-              "default": "now (Unix timestamp)"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "The page number to get",
-            "schema": {
-              "type": "integer",
-              "default": "1"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The number of results to return",
-            "schema": {
-              "type": "integer",
-              "default": "100"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["address"],
+                "properties": {
+                  "address": {
+                    "type": "string",
+                    "description": "The address to get the transactions for"
+                  },
+                  "startDate": {
+                    "type": "string",
+                    "description": "Unix timestamp for the start date",
+                    "default": "1 day ago (Unix timestamp)"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "description": "The end date as unix timestamp to get recipient transactions",
+                    "default": "now (Unix timestamp)"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "description": "The page number to get",
+                    "default": 1
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "The number of results to return",
+                    "default": 100
+                  }
+                }
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Sender transactions",
@@ -413,29 +361,30 @@
         }
       }
     },
-    "/00ded1f2-64bd-4435-87e4-aa331d05ac48-cli": {
-      "get": {
+    "/transactions-volume": {
+      "post": {
         "description": "Get transaction volume over time",
-        "parameters": [
-          {
-            "name": "startDate",
-            "in": "query",
-            "description": "Unix timestamp for the start date",
-            "schema": {
-              "type": "string",
-              "default": "1 day ago (Unix timestamp)"
-            }
-          },
-          {
-            "name": "endDate",
-            "in": "query",
-            "description": "The end date as unix timestamp to get transaction volume",
-            "schema": {
-              "type": "string",
-              "default": "now (Unix timestamp)"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "startDate": {
+                    "type": "string",
+                    "description": "Unix timestamp for the start date",
+                    "default": "1 day ago (Unix timestamp)"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "description": "The end date as unix timestamp to get transaction volume",
+                    "default": "now (Unix timestamp)"
+                  }
+                }
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Transaction volume",
@@ -480,65 +429,50 @@
         }
       }
     },
-    "/009f92b3-c9f1-4a66-80b4-c5762d89b998-cli": {
-      "get": {
+    "/transactions-volume-in": {
+      "post": {
         "description": "Get volume bridged into a specific domain",
-        "parameters": [
-          {
-            "name": "startDate",
-            "in": "query",
-            "description": "Unix timestamp for the start date",
-            "schema": {
-              "type": "string",
-              "default": "1 day ago (Unix timestamp)"
-            }
-          },
-          {
-            "name": "endDate",
-            "in": "query",
-            "description": "The end date as unix timestamp to get transaction volume",
-            "schema": {
-              "type": "string",
-              "default": "now (Unix timestamp)"
-            }
-          },
-          {
-            "name": "sourceDomain",
-            "in": "query",
-            "description": "Domain IDs for the source domain",
-            "schema": {
-              "type": "string",
-              "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
-            }
-          },
-          {
-            "name": "destinationDomain",
-            "in": "query",
-            "description": "Domain IDs for the destination domain",
-            "schema": {
-              "type": "string",
-              "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "The page number to get",
-            "schema": {
-              "type": "integer",
-              "default": "1"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The number of results to return",
-            "schema": {
-              "type": "integer",
-              "default": "100"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "startDate": {
+                    "type": "string",
+                    "description": "Unix timestamp for the start date",
+                    "default": "1 day ago (Unix timestamp)"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "description": "Unix timestamp for the end date",
+                    "default": "now (Unix timestamp)"
+                  },
+                  "sourceDomain": {
+                    "type": "string",
+                    "description": "Domain IDs for the source domain",
+                    "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
+                  },
+                  "destinationDomain": {
+                    "type": "string",
+                    "description": "Domain IDs for the destination domain",
+                    "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "description": "The page number to get",
+                    "default": 1
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "The number of results to return",
+                    "default": 100
+                  }
+                }
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Volume bridged into a specific domain",
@@ -583,65 +517,50 @@
         }
       }
     },
-    "/cb92766d-e05e-48c6-9ebb-a880b63791e7-cli": {
-      "get": {
+    "/transactions-volume-out": {
+      "post": {
         "description": "Get volume bridged out of a specific domain",
-        "parameters": [
-          {
-            "name": "startDate",
-            "in": "query",
-            "description": "Unix timestamp for the start date",
-            "schema": {
-              "type": "string",
-              "default": "1 day ago (Unix timestamp)"
-            }
-          },
-          {
-            "name": "endDate",
-            "in": "query",
-            "description": "The end date as unix timestamp to get transaction volume",
-            "schema": {
-              "type": "string",
-              "default": "now (Unix timestamp)"
-            }
-          },
-          {
-            "name": "sourceDomain",
-            "in": "query",
-            "description": "Domain IDs for the source domain",
-            "schema": {
-              "type": "string",
-              "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
-            }
-          },
-          {
-            "name": "destinationDomain",
-            "in": "query",
-            "description": "Domain IDs for the destination domain",
-            "schema": {
-              "type": "string",
-              "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "The page number to get",
-            "schema": {
-              "type": "integer",
-              "default": "1"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The number of results to return",
-            "schema": {
-              "type": "integer",
-              "default": "100"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "startDate": {
+                    "type": "string",
+                    "description": "Unix timestamp for the start date",
+                    "default": "1 day ago (Unix timestamp)"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "description": "Unix timestamp for the end date",
+                    "default": "now (Unix timestamp)"
+                  },
+                  "sourceDomain": {
+                    "type": "string",
+                    "description": "Domain IDs for the source domain",
+                    "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
+                  },
+                  "destinationDomain": {
+                    "type": "string",
+                    "description": "Domain IDs for the destination domain",
+                    "default": "[\"0\",\"1\",\"2\",\"3\",\"6\",\"7\"]"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "description": "The page number to get",
+                    "default": 1
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "The number of results to return",
+                    "default": 100
+                  }
+                }
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Volume bridged out of a specific domain",
@@ -686,20 +605,25 @@
         }
       }
     },
-    "/ff803eab-7f4d-4418-90a4-d225cddc1dff-cli": {
-      "get": {
+    "/transactions-txHash": {
+      "post": {
         "description": "Get transaction by transaction hash",
-        "parameters": [
-          {
-            "name": "txHash",
-            "in": "query",
-            "description": "The transaction hash",
-            "required": true,
-            "schema": {
-              "type": "string"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["txHash"],
+                "properties": {
+                  "txHash": {
+                    "type": "string",
+                    "description": "The transaction hash"
+                  }
+                }
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Transaction by transaction hash",
@@ -744,8 +668,8 @@
         }
       }
     },
-    "/02cf2c2e-406c-4d30-ac85-4957e254dc00-cli": {
-      "get": {
+    "/domains-list": {
+      "post": {
         "description": "Get list of domains",
         "responses": {
           "200": {
@@ -791,38 +715,35 @@
         }
       }
     },
-    "/d922316b-03a8-403f-8102-7da558626a49-cli": {
-      "get": {
+    "/stats-recipients": {
+      "post": {
         "description": "Get top recipients",
-        "parameters": [
-          {
-            "name": "startDate",
-            "in": "query",
-            "description": "Unix timestamp for the start date",
-            "schema": {
-              "type": "string",
-              "default": "1 day ago (Unix timestamp)"
-            }
-          },
-          {
-            "name": "endDate",
-            "in": "query",
-            "description": "Unix timestamp for the end date",
-            "schema": {
-              "type": "string",
-              "default": "now (Unix timestamp)"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The number of results to return",
-            "schema": {
-              "type": "integer",
-              "default": "100"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "startDate": {
+                    "type": "string",
+                    "description": "Unix timestamp for the start date",
+                    "default": "1 day ago (Unix timestamp)"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "description": "Unix timestamp for the end date",
+                    "default": "now (Unix timestamp)"
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "The number of results to return",
+                    "default": "100"
+                  }
+                }
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Top recipients",
@@ -867,38 +788,35 @@
         }
       }
     },
-    "/42a3881e-4016-4b08-b784-625f42bda4e1-cli": {
-      "get": {
+    "/stats-senders": {
+      "post": {
         "description": "Get top senders",
-        "parameters": [
-          {
-            "name": "startDate",
-            "in": "query",
-            "description": "Unix timestamp for the start date",
-            "schema": {
-              "type": "string",
-              "default": "1 day ago (Unix timestamp)"
-            }
-          },
-          {
-            "name": "endDate",
-            "in": "query",
-            "description": "Unix timestamp for the end date",
-            "schema": {
-              "type": "string",
-              "default": "now (Unix timestamp)"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The number of results to return",
-            "schema": {
-              "type": "integer",
-              "default": "100"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "startDate": {
+                    "type": "string",
+                    "description": "Unix timestamp for the start date",
+                    "default": "1 day ago (Unix timestamp)"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "description": "Unix timestamp for the end date",
+                    "default": "now (Unix timestamp)"
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "The number of results to return",
+                    "default": "100"
+                  }
+                }
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Top senders",
