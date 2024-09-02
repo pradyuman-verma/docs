@@ -19,6 +19,10 @@
     {
       "name": "Support",
       "url": "mailto:support@blockflow.network"
+    },
+    {
+      "name": "Get API Key",
+      "url": "https://app.blockflow.network/"
     }
   ],
   "topbarCtaButton": {
