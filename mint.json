@@ -19,6 +19,10 @@
     {
       "name": "Support",
       "url": "mailto:support@blockflow.network"
+    },
+    {
+      "name": "Get API Key",
+      "url": "https://app.blockflow.network/"
     }
   ],
   "topbarCtaButton": {
@@ -34,7 +38,32 @@
   "navigation": [
     {
       "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
+      "pages": [
+        "api-reference/introduction",
+        "api-reference/prerequisites",
+        "api-reference/errors"
+      ]
+    },
+    {
+      "group": "Stats",
+      "pages": ["api-reference/stats/recipients", "api-reference/stats/senders"]
+    },
+    {
+      "group": "Transactions",
+      "pages": [
+        "api-reference/transactions/burn",
+        "api-reference/transactions/mint",
+        "api-reference/transactions/sender",
+        "api-reference/transactions/recipient",
+        "api-reference/transactions/volume",
+        "api-reference/transactions/volumeIn",
+        "api-reference/transactions/volumeOut",
+        "api-reference/transactions/txHash"
+      ]
+    },
+    {
+      "group": "Domains",
+      "pages": ["api-reference/domains/list"]
     }
   ],
   "footerSocials": {
